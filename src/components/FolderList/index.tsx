@@ -1,13 +1,15 @@
-import range from 'helpers/range'
-import { fakeFolder } from 'helpers/fakes/folder'
 import FolderCard from 'components/ui/FolderCard'
 import React from 'react'
+import useObservable from 'hooks/useObservable'
+import $state from 'data/state'
 
 export default function FolderList() {
+  const [state] = useObservable($state)
+
   return (
     <>
-      {range(5, fakeFolder).map((folder, i) => (
-        <FolderCard isActive={!i} folder={folder} key={folder.id} />
+      {state?.folders.map((folder) => (
+        <FolderCard isActive={state?.activeFolderId === folder.id} folder={folder} key={folder.id} />
       ))}
     </>
   )
