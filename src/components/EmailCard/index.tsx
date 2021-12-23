@@ -1,9 +1,24 @@
-import { EmailCardContainer } from 'components/EmailCard/styled'
+import {
+  EmailCardContainer,
+  EmailCardDate,
+  EmailCardFrom,
+  EmailCardPreview,
+  EmailCardReadIndicator,
+  EmailCardSubject,
+} from 'components/EmailCard/styled'
 
 interface EmailCardProps {
   email: EmailRecord
 }
 
 export default function EmailCard({ email }: EmailCardProps) {
-  return <EmailCardContainer>{JSON.stringify(email)}</EmailCardContainer>
+  return (
+    <EmailCardContainer>
+      <EmailCardReadIndicator isRead={email.isRead} />
+      <EmailCardFrom>{email.from}</EmailCardFrom>
+      <EmailCardDate>{email.date.toLocaleString().slice(0, -3)}</EmailCardDate>
+      <EmailCardSubject>{email.subject}</EmailCardSubject>
+      <EmailCardPreview>{email.contentPreview}</EmailCardPreview>
+    </EmailCardContainer>
+  )
 }
