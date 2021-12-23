@@ -7,7 +7,7 @@ import { AppActions, AppContainer, AppEmailList, AppPreview, AppSidebar } from '
 import EmailCard from 'components/ui/EmailCard'
 import range from 'helpers/range'
 import FolderCard from 'components/ui/FolderCard'
-import { datatype, lorem } from 'faker'
+import { fakeFolder } from 'helpers/fakes/folder'
 
 function App() {
   const [emails] = useObservable($emails)
@@ -21,15 +21,7 @@ function App() {
   return (
     <AppContainer>
       <AppSidebar>
-        {range(
-          5,
-          (i) =>
-            ({
-              id: i.toString(),
-              name: lorem.word(),
-              items: datatype.number({ min: 10, max: 100 }),
-            } as Folder)
-        ).map((folder, i) => (
+        {range(5, fakeFolder).map((folder, i) => (
           <FolderCard isActive={!i} folder={folder} key={folder.id} />
         ))}
       </AppSidebar>
