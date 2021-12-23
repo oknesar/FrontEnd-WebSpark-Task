@@ -9,6 +9,8 @@ import range from 'helpers/range'
 import FolderCard from 'components/ui/FolderCard'
 import { fakeFolder } from 'helpers/fakes/folder'
 import ContentPlaceholder from 'components/ui/ContentPlaceholder'
+import Button from 'components/ui/Button'
+import { FaEye, FaTrash } from 'react-icons/fa'
 
 function App() {
   const [emails] = useObservable($emails)
@@ -31,7 +33,18 @@ function App() {
           <EmailCard key={email.id} email={email} />
         ))}
       </AppEmailList>
-      <AppActions>Action appears here</AppActions>
+      <AppActions>
+        {false && (
+          <>
+            <Button type='action'>
+              <FaEye />
+            </Button>
+            <Button type='action'>
+              <FaTrash />
+            </Button>
+          </>
+        )}
+      </AppActions>
       <AppEmailContent>
         <ContentPlaceholder />
       </AppEmailContent>

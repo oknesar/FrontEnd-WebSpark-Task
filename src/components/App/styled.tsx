@@ -31,4 +31,9 @@ export const AppActions = styled.section`
   grid-area: actions;
   overflow: hidden;
   align-self: center;
+  padding: 0.5rem 2rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min-content;
+  gap: 0.4rem;
 `
