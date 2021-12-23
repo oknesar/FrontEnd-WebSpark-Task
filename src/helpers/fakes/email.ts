@@ -5,7 +5,6 @@ export function fakeRawEmail(): RawEmailRecord {
   const content = lorem.text()
   return {
     id: uuid(),
-    content,
     contentPreview: content.slice(0, 120),
     date: date.recent().toISOString(),
     from: internet.email(),

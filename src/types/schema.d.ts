@@ -4,7 +4,10 @@ interface RawEmailRecord {
   from: string
   subject: string
   contentPreview: string
-  content: string
   isRead: boolean
   isDeleted: boolean
+}
+
+interface EmailRecord extends RawEmailRecord {
+  date: Date
 }
