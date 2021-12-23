@@ -3,12 +3,13 @@ interface RawEmailRecord {
   date: string
   from: string
   subject: string
+  content: string
   contentPreview: string
   isRead: boolean
   isDeleted: boolean
 }
 
-interface EmailRecord extends RawEmailRecord {
+interface EmailRecord extends Omit<RawEmailRecord, 'content'> {
   date: Date
 }
 
