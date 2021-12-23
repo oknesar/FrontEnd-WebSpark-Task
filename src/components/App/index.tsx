@@ -4,9 +4,9 @@ import { $emails } from 'data/emails'
 import useObservable from 'hooks/useObservable'
 import useDidMount from 'hooks/useDidMount'
 import { AppActions, AppContainer, AppEmailList, AppPreview, AppSidebar } from 'components/App/styled'
-import EmailCard from 'components/EmailCard'
+import EmailCard from 'components/ui/EmailCard'
 import range from 'helpers/range'
-import FolderCard from 'components/FolderCard'
+import FolderCard from 'components/ui/FolderCard'
 import { datatype, lorem } from 'faker'
 
 function App() {

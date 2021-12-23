@@ -1,4 +1,4 @@
-import { FolderCardContainer, FolderCardItemsAmount } from './styled'
+import { FolderCardContainer, FolderCardItemsAmount } from 'components/ui/FolderCard/styled'
 
 interface FolderCardProps {
   folder: Folder

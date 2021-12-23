@@ -5,7 +5,7 @@ import {
   EmailCardPreview,
   EmailCardReadIndicator,
   EmailCardSubject,
-} from 'components/EmailCard/styled'
+} from 'components/ui/EmailCard/styled'
 
 interface EmailCardProps {
   email: EmailRecord
