@@ -11,3 +11,9 @@ interface RawEmailRecord {
 interface EmailRecord extends RawEmailRecord {
   date: Date
 }
+
+interface Folder {
+  id: string
+  name: string
+  items: number
+}

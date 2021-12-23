@@ -14,10 +14,13 @@ export const AppContainer = styled.main`
 export const AppSidebar = styled.section`
   grid-area: sidebar;
   overflow: hidden auto;
+  background-color: ${({ theme }) => theme.colors.secondary};
 `
 export const AppEmailList = styled.section`
   grid-area: list;
   overflow: hidden auto;
+  border-left: 1px solid ${({ theme }) => theme.colors.borderSharp};
+  border-right: 1px solid ${({ theme }) => theme.colors.borderSharp};
 `
 export const AppPreview = styled.section`
   grid-area: preview;

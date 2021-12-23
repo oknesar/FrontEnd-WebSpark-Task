@@ -37,6 +37,7 @@ export const EmailCardFrom = styled.div`
   font-size: 0.9rem;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-weight: bold;
 `
 export const EmailCardSubject = styled.div`
   grid-area: subject;

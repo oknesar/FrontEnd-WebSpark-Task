@@ -4,6 +4,7 @@ const theme = {
     secondary: '#2a2a2b',
     accent: '#3b79cc',
     active: '#545457',
+    hover: '#444446',
     text: '#d5dade',
     textSecondary: '#737376',
     borderSharp: '#000000',
