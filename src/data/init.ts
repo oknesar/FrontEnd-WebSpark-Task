@@ -2,15 +2,7 @@ import { merge, Observable, scan, tap } from 'rxjs'
 import { $emitter, Actions } from 'data/emitter'
 import { $emails } from 'data/effects/emails'
 import { $folders } from 'data/effects/folders'
-import $state from 'data/state'
-
-const initialState = {
-  folders: [] as Folder[],
-  activeFolderId: undefined as undefined | string,
-  emails: [] as EmailRecord[],
-}
-
-export type State = typeof initialState
+import $state, { initialState } from 'data/state'
 
 export default function initState() {
   const $effects: Observable<Actions> = merge($emails, $folders)

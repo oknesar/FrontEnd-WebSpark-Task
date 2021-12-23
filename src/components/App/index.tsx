@@ -4,12 +4,11 @@ import ContentPlaceholder from 'components/ui/ContentPlaceholder'
 import Button from 'components/ui/Button'
 import { FaEye, FaTrash } from 'react-icons/fa'
 import FolderList from 'components/FolderList'
-import useObservable from 'hooks/useObservable'
-import $state from 'data/state'
 import EmailCard from 'components/ui/EmailCard'
+import useStore from 'hooks/useStore'
 
 function App() {
-  const [state] = useObservable($state)
+  const emails = useStore((state) => state.emails)
 
   return (
     <AppContainer>
@@ -17,7 +16,7 @@ function App() {
         <FolderList />
       </AppSidebar>
       <AppEmailList>
-        {state?.emails.map((email) => (
+        {emails.map((email) => (
           <EmailCard key={email.id} email={email} />
         ))}
       </AppEmailList>

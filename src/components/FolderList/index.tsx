@@ -1,12 +1,13 @@
 import FolderCard from 'components/ui/FolderCard'
 import React, { useCallback } from 'react'
-import useObservable from 'hooks/useObservable'
-import $state from 'data/state'
 import useEmitter from 'hooks/useEmitter'
+import useStore from 'hooks/useStore'
 
 export default function FolderList() {
-  const [state] = useObservable($state)
+  const folders = useStore((state) => state.folders)
+  const activeFolderId = useStore((state) => state.activeFolderId)
   const emit = useEmitter()
+
   const handleClick = useCallback(
     (e) =>
       emit({
@@ -18,9 +19,9 @@ export default function FolderList() {
 
   return (
     <>
-      {state?.folders.map((folder) => (
+      {folders.map((folder) => (
         <FolderCard
-          isActive={state?.activeFolderId === folder.id}
+          isActive={activeFolderId === folder.id}
           folder={folder}
           key={folder.id}
           data-id={folder.id}

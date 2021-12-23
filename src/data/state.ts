@@ -1,5 +1,16 @@
-import { Subject } from 'rxjs'
-import { State } from 'data/init'
+import { BehaviorSubject } from 'rxjs'
 
-const $state = new Subject<State>()
+export interface State {
+  emails: EmailRecord[]
+  activeFolderId: string | undefined
+  folders: Folder[]
+}
+
+export const initialState: State = {
+  folders: [],
+  activeFolderId: undefined,
+  emails: [],
+}
+
+const $state = new BehaviorSubject(initialState)
 export default $state

@@ -22,4 +22,6 @@ export const FolderCardItemsAmount = styled.div`
   margin-left: 0.5rem;
   padding: 0.1rem 0.3rem;
   border-radius: 2px;
+  font-size: 0.7rem;
+  text-transform: none;
 `
