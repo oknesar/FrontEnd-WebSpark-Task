@@ -4,9 +4,9 @@ export const AppContainer = styled.main`
   display: grid;
   grid-template-areas:
     'sidebar list actions'
-    'sidebar list preview';
+    'sidebar list content';
   grid-template-columns: 200px 300px 1fr;
-  grid-template-rows: 40px 1fr;
+  grid-template-rows: auto 1fr;
   height: 100vh;
   width: 100vw;
 `
@@ -22,8 +22,8 @@ export const AppEmailList = styled.section`
   border-left: 1px solid ${({ theme }) => theme.colors.borderSharp};
   border-right: 1px solid ${({ theme }) => theme.colors.borderSharp};
 `
-export const AppPreview = styled.section`
-  grid-area: preview;
+export const AppEmailContent = styled.section`
+  grid-area: content;
   overflow: auto;
 `
 

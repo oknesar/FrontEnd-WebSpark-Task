@@ -3,11 +3,12 @@ import { $emitter } from 'data/emitter'
 import { $emails } from 'data/emails'
 import useObservable from 'hooks/useObservable'
 import useDidMount from 'hooks/useDidMount'
-import { AppActions, AppContainer, AppEmailList, AppPreview, AppSidebar } from 'components/App/styled'
+import { AppActions, AppContainer, AppEmailList, AppEmailContent, AppSidebar } from 'components/App/styled'
 import EmailCard from 'components/ui/EmailCard'
 import range from 'helpers/range'
 import FolderCard from 'components/ui/FolderCard'
 import { fakeFolder } from 'helpers/fakes/folder'
+import ContentPlaceholder from 'components/ui/ContentPlaceholder'
 
 function App() {
   const [emails] = useObservable($emails)
@@ -31,7 +32,9 @@ function App() {
         ))}
       </AppEmailList>
       <AppActions>Action appears here</AppActions>
-      <AppPreview></AppPreview>
+      <AppEmailContent>
+        <ContentPlaceholder />
+      </AppEmailContent>
     </AppContainer>
   )
 }
