@@ -5,5 +5,5 @@ export default function request<D extends (...params: any) => any>(
 ): Promise<{
   data: ReturnType<D>
 }> {
-  return new Promise((resolve) => setTimeout(resolve, Math.random() * 600, { data: fake(...args) }))
+  return new Promise((resolve) => setTimeout(resolve, Math.random() * 800, { data: fake(...args) }))
 }

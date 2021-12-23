@@ -1,11 +1,12 @@
-import { from, map, switchMap } from 'rxjs'
+import { distinctUntilChanged, filter, from, map, switchMap } from 'rxjs'
 import { getEmailsList } from 'api'
-import { $emitter } from 'data/emitter'
-import action from 'helpers/operators/action'
 import mapToAction from 'helpers/operators/mapToAction'
+import $state from 'data/state'
 
-export const $emails = $emitter.pipe(
-  action('REQUEST_EMAIL_LIST'),
+export const $emails = $state.pipe(
+  map((state) => state.activeFolderId),
+  filter(Boolean),
+  distinctUntilChanged(),
   switchMap((folderId) => from(getEmailsList(folderId))),
   map(({ data }) =>
     data.map((email) => ({
