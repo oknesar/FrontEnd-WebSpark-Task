@@ -7,6 +7,23 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${({ theme }) => theme.colors.primary};
   }
 
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background-color: ${({ theme }) => theme.colors.secondary};
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.textSecondary};
+    border-radius: 16px;
+    border: 4px solid ${({ theme }) => theme.colors.secondary};
+  }
+
+  *::-webkit-scrollbar-button {
+    display:none;
+  }
 `
 
 export default GlobalStyle
