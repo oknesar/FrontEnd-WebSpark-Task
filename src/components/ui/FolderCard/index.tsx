@@ -11,7 +11,7 @@ export default function FolderCard({ folder, isActive, ...divProps }: FolderCard
       <span>{folder.name}</span>
       <FolderCardItemsAmount>
         {Math.min(folder.items, 999)}
-        {folder.items > 999 ? '+' : ''} items
+        {folder.items > 999 ? '+' : ''} total
       </FolderCardItemsAmount>
     </FolderCardContainer>
   )

@@ -25,3 +25,14 @@ export const getEmailContent = (emailId: string) =>
         .flat()
         .find((email) => email.id === emailId)?.content ?? ''
   )
+
+export const toggleRead = (emailId: string) =>
+  request(`/email/${emailId}`, () => {
+    const email = data
+      .map((folder) => folder.list)
+      .flat()
+      .find((email) => email.id === emailId)
+
+    if (!email) return
+    email.isRead = !email.isRead
+  })
