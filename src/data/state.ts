@@ -3,15 +3,15 @@ import { BehaviorSubject } from 'rxjs'
 export interface State {
   activeEmail: EmailRecord | undefined
   activeEmailContent: string | undefined
-  emails: EmailRecord[]
+  emails: EmailRecord[] | undefined
   activeFolderId: string | undefined
-  folders: Folder[]
+  folders: Folder[] | undefined
 }
 
 export const initialState: State = {
-  folders: [],
+  folders: undefined,
   activeFolderId: undefined,
-  emails: [],
+  emails: undefined,
   activeEmail: undefined,
   activeEmailContent: undefined,
 }

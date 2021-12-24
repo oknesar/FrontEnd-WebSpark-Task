@@ -3,6 +3,15 @@ import { FaEye, FaTrash } from 'react-icons/fa'
 import React, { useCallback } from 'react'
 import useStore from 'hooks/useStore'
 import useEmitter from 'hooks/useEmitter'
+import styled from 'styled-components'
+
+const ToolBarContent = styled.div`
+  padding: 0.5rem 2rem;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: min-content;
+  gap: 0.4rem;
+`
 
 export default function ToolBar() {
   const activeEmail = useStore((state) => state.activeEmail)
@@ -30,13 +39,13 @@ export default function ToolBar() {
 
   if (!activeEmailContent) return null
   return (
-    <>
+    <ToolBarContent>
       <Button disabled={activeEmail?.isDeleted} type='action' onClick={handleToggleVisible}>
         <FaEye />
       </Button>
       <Button disabled={activeEmail?.isDeleted} type='action' onClick={handleDeleteEmail}>
         <FaTrash />
       </Button>
-    </>
+    </ToolBarContent>
   )
 }

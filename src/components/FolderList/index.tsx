@@ -2,6 +2,7 @@ import FolderCard from 'components/ui/FolderCard'
 import React, { useCallback } from 'react'
 import useEmitter from 'hooks/useEmitter'
 import useStore from 'hooks/useStore'
+import Loader from 'components/ui/Loader'
 
 export default function FolderList() {
   const folders = useStore((state) => state.folders)
@@ -19,7 +20,8 @@ export default function FolderList() {
 
   return (
     <>
-      {folders.map((folder) => (
+      <Loader loading={!folders} />
+      {folders?.map((folder) => (
         <FolderCard
           isActive={activeFolderId === folder.id}
           folder={folder}

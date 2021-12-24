@@ -1,14 +1,11 @@
 import React from 'react'
-import { AppActions, AppContainer, AppEmailContent, AppEmailList, AppSidebar } from 'components/App/styled'
-import ContentPlaceholder from 'components/ui/ContentPlaceholder'
+import { AppContainer, AppEmailContent, AppEmailList, AppSidebar, AppToolbar } from 'components/App/styled'
 import FolderList from 'components/FolderList'
-import useStore from 'hooks/useStore'
 import EmailList from 'components/EmailList'
 import ToolBar from 'components/ToolBar'
+import { EmailContent } from 'components/EmailContent'
 
 function App() {
-  const activeEmailContent = useStore((state) => state.activeEmailContent)
-
   return (
     <AppContainer>
       <AppSidebar>
@@ -17,10 +14,12 @@ function App() {
       <AppEmailList>
         <EmailList />
       </AppEmailList>
-      <AppActions>
+      <AppToolbar>
         <ToolBar />
-      </AppActions>
-      <AppEmailContent>{activeEmailContent ?? <ContentPlaceholder />}</AppEmailContent>
+      </AppToolbar>
+      <AppEmailContent>
+        <EmailContent />
+      </AppEmailContent>
     </AppContainer>
   )
 }

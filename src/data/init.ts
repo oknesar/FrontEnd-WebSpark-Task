@@ -33,7 +33,7 @@ export default function initState() {
               return {
                 ...state,
                 activeFolderId: action.payload,
-                emails: [],
+                emails: undefined,
                 activeEmail: undefined,
                 activeEmailContent: undefined,
               }
@@ -58,12 +58,12 @@ export default function initState() {
 
           case 'TOGGLE_EMAIL_READ':
           case 'DELETE_EMAIL':
-            const index = state.emails.findIndex((email) => email.id === action.payload)
-            if (index !== -1) {
+            const index = state.emails?.findIndex((email) => email.id === action.payload) ?? -1
+            if (state.emails && index !== -1) {
               const targetEmail = state.emails[index]
               const nextEmail = {
                 ...targetEmail,
-                isRead: action.type === 'TOGGLE_EMAIL_READ' ? !targetEmail.isRead : targetEmail.isRead,
+                isRead: action.type === 'TOGGLE_EMAIL_READ' ? !targetEmail.isRead : true,
                 isDeleted: action.type === 'DELETE_EMAIL' ? true : targetEmail.isDeleted,
               }
 

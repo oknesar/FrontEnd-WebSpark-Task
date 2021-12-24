@@ -2,7 +2,7 @@ import { date, name, lorem, internet, datatype } from 'faker'
 import { v4 as uuid } from 'uuid'
 
 export function fakeEmail(): RawEmailRecord {
-  const content = lorem.text()
+  const content = lorem.paragraphs(3)
   const isRead = datatype.boolean()
   return {
     id: uuid(),
