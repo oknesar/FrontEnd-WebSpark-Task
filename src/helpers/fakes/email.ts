@@ -1,7 +1,7 @@
 import { date, name, lorem, internet, datatype } from 'faker'
 import { v4 as uuid } from 'uuid'
 
-export function fakeEmail(): RawEmailRecord {
+export function fakeEmail(predefined?: Partial<RawEmailRecord>): RawEmailRecord {
   const content = lorem.paragraphs(3)
   const isRead = datatype.boolean()
   return {
@@ -13,5 +13,6 @@ export function fakeEmail(): RawEmailRecord {
     isRead,
     isDeleted: isRead && datatype.boolean(),
     subject: name.title(),
+    ...predefined,
   }
 }

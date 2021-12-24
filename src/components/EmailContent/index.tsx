@@ -11,7 +11,7 @@ export function EmailContent() {
     <>
       <Loader loading={activeEmail && !activeEmailContent} />
       {activeEmailContent}
-      {!(activeEmail && !activeEmailContent) && <ContentPlaceholder />}
+      {!(activeEmail || activeEmailContent) && <ContentPlaceholder />}
     </>
   )
 }

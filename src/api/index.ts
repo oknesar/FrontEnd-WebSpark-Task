@@ -5,7 +5,7 @@ import { fakeFolder } from 'helpers/fakes/folder'
 
 export const apiTestData = range(5, fakeFolder).map((folder) => ({
   ...folder,
-  list: range(folder.items, fakeEmail),
+  list: range(folder.items, () => fakeEmail()),
 }))
 
 export const getFoldersList = () =>
