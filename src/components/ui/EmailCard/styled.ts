@@ -64,17 +64,23 @@ export const EmailCardContainer = styled.div`
       border-bottom-color: transparent;
     }
 
-    ${EmailCardDate}, ${EmailCardPreview} {
-      color: ${({ theme }) => theme.colors.text};
-    }
-
     ${EmailCardReadIndicator} {
       border-color: ${({ theme }) => theme.colors.text};
+    }
+
+    &:not(.deleted) {
+      ${EmailCardDate}, ${EmailCardPreview} {
+        color: ${({ theme }) => theme.colors.text};
+      }
     }
   }
 
   &.deleted {
     text-decoration: line-through;
     color: ${({ theme }) => theme.colors.textSecondary};
+
+    &.active {
+      background-color: ${({ theme }) => theme.colors.hover};
+    }
   }
 `

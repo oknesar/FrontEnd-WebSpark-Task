@@ -1,15 +1,5 @@
-import {
-  distinctUntilChanged,
-  filter,
-  from,
-  ignoreElements,
-  map,
-  mapTo,
-  merge,
-  mergeMap,
-  switchMap,
-} from 'rxjs'
-import { getEmailContent, getEmailsList, toggleRead } from 'api'
+import { distinctUntilChanged, filter, from, ignoreElements, map, merge, mergeMap, switchMap } from 'rxjs'
+import { deleteEmail, getEmailContent, getEmailsList, toggleRead } from 'api'
 import mapToAction from 'helpers/operators/mapToAction'
 import $state from 'data/state'
 import { watch } from 'helpers/operators/watch'
@@ -35,7 +25,13 @@ const $activeEmailContentChange = $state.pipe(
 
 const $toggleEmailRead = $emitter.pipe(
   action('TOGGLE_EMAIL_READ'),
-  mergeMap((emailId) => from(toggleRead(emailId)).pipe(mapTo(emailId))),
+  mergeMap((emailId) => from(toggleRead(emailId))),
+  ignoreElements()
+)
+
+const $deleteEmail = $emitter.pipe(
+  action('DELETE_EMAIL'),
+  mergeMap((emailId) => from(deleteEmail(emailId))),
   ignoreElements()
 )
 
@@ -58,5 +54,6 @@ export const $emails = merge(
   $activeEmailChange,
   $activeFolderChange,
   $activeEmailContentChange,
-  $toggleEmailRead
+  $toggleEmailRead,
+  $deleteEmail
 )

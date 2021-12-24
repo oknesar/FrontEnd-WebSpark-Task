@@ -8,6 +8,7 @@ export type Actions =
   | Action<'SET_ACTIVE_EMAIL', EmailRecord>
   | Action<'SET_ACTIVE_EMAIL_CONTENT', string>
   | Action<'TOGGLE_EMAIL_READ', string>
+  | Action<'DELETE_EMAIL', string>
 
 export type ActionPayload<T extends Actions['type']> = Extract<Actions, { type: T }> extends {
   payload: infer P

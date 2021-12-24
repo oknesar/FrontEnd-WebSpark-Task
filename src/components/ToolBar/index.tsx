@@ -18,13 +18,23 @@ export default function ToolBar() {
     [activeEmail?.id]
   )
 
+  const handleDeleteEmail = useCallback(
+    () =>
+      activeEmail?.id &&
+      emit({
+        type: 'DELETE_EMAIL',
+        payload: activeEmail?.id,
+      }),
+    [activeEmail?.id]
+  )
+
   if (!activeEmailContent) return null
   return (
     <>
       <Button disabled={activeEmail?.isDeleted} type='action' onClick={handleToggleVisible}>
         <FaEye />
       </Button>
-      <Button disabled={activeEmail?.isDeleted} type='action'>
+      <Button disabled={activeEmail?.isDeleted} type='action' onClick={handleDeleteEmail}>
         <FaTrash />
       </Button>
     </>

@@ -57,12 +57,14 @@ export default function initState() {
             }
 
           case 'TOGGLE_EMAIL_READ':
+          case 'DELETE_EMAIL':
             const index = state.emails.findIndex((email) => email.id === action.payload)
             if (index !== -1) {
               const targetEmail = state.emails[index]
               const nextEmail = {
                 ...targetEmail,
-                isRead: !targetEmail.isRead,
+                isRead: action.type === 'TOGGLE_EMAIL_READ' ? !targetEmail.isRead : targetEmail.isRead,
+                isDeleted: action.type === 'DELETE_EMAIL' ? true : targetEmail.isDeleted,
               }
 
               return {
