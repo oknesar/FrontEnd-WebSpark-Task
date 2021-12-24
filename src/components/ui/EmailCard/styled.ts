@@ -12,6 +12,7 @@ export const EmailCardReadIndicator = styled.div<{ isRead: boolean }>`
   width: 0.7rem;
   border-radius: 2px;
   visibility: ${({ isRead }) => (isRead ? 'hidden' : 'visible')};
+  border: 1px solid transparent;
 `
 export const EmailCardFrom = styled.div`
   grid-area: from;
@@ -65,6 +66,10 @@ export const EmailCardContainer = styled.div`
 
     ${EmailCardDate}, ${EmailCardPreview} {
       color: ${({ theme }) => theme.colors.text};
+    }
+
+    ${EmailCardReadIndicator} {
+      border-color: ${({ theme }) => theme.colors.text};
     }
   }
 

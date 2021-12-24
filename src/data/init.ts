@@ -1,4 +1,4 @@
-import { merge, scan } from 'rxjs'
+import { queueScheduler, merge, observeOn, scan } from 'rxjs'
 import { $emitter } from 'data/emitter'
 import { $emails } from 'data/effects/emails'
 import { $folders } from 'data/effects/folders'
@@ -9,6 +9,7 @@ export default function initState() {
 
   $emitter
     .pipe(
+      observeOn(queueScheduler),
       scan((state, action) => {
         if (process.env.NODE_ENV === 'development') console.info(action)
         switch (action.type) {

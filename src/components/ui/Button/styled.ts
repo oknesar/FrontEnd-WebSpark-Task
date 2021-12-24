@@ -12,4 +12,7 @@ export const ActionButton = styled.button`
   justify-content: center;
   align-items: center;
   font-size: 0.9rem;
+  &[disabled] {
+    opacity: 0.5;
+  }
 `

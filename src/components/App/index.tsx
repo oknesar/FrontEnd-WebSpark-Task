@@ -1,11 +1,10 @@
 import React from 'react'
-import { AppActions, AppContainer, AppEmailList, AppEmailContent, AppSidebar } from 'components/App/styled'
+import { AppActions, AppContainer, AppEmailContent, AppEmailList, AppSidebar } from 'components/App/styled'
 import ContentPlaceholder from 'components/ui/ContentPlaceholder'
-import Button from 'components/ui/Button'
-import { FaEye, FaTrash } from 'react-icons/fa'
 import FolderList from 'components/FolderList'
 import useStore from 'hooks/useStore'
 import EmailList from 'components/EmailList'
+import ToolBar from 'components/ToolBar'
 
 function App() {
   const activeEmailContent = useStore((state) => state.activeEmailContent)
@@ -19,16 +18,7 @@ function App() {
         <EmailList />
       </AppEmailList>
       <AppActions>
-        {!!activeEmailContent && (
-          <>
-            <Button type='action'>
-              <FaEye />
-            </Button>
-            <Button type='action'>
-              <FaTrash />
-            </Button>
-          </>
-        )}
+        <ToolBar />
       </AppActions>
       <AppEmailContent>{activeEmailContent ?? <ContentPlaceholder />}</AppEmailContent>
     </AppContainer>

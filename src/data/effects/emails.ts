@@ -1,4 +1,14 @@
-import { filter, from, ignoreElements, map, mapTo, merge, mergeMap, switchMap } from 'rxjs'
+import {
+  distinctUntilChanged,
+  filter,
+  from,
+  ignoreElements,
+  map,
+  mapTo,
+  merge,
+  mergeMap,
+  switchMap,
+} from 'rxjs'
 import { getEmailContent, getEmailsList, toggleRead } from 'api'
 import mapToAction from 'helpers/operators/mapToAction'
 import $state from 'data/state'
@@ -15,7 +25,8 @@ const $activeEmailChange = $state.pipe(
 )
 
 const $activeEmailContentChange = $state.pipe(
-  watch((state) => state.activeEmail),
+  map((state) => state.activeEmail),
+  distinctUntilChanged((previous, current) => previous?.id === current?.id),
   filter(Boolean),
   filter((email) => Boolean(email && !email.isRead)),
   map((email) => email!.id),
