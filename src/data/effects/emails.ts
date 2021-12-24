@@ -1,21 +1,20 @@
-import { distinctUntilChanged, filter, from, map, merge, switchMap } from 'rxjs'
+import { filter, from, map, merge, switchMap } from 'rxjs'
 import { getEmailContent, getEmailsList } from 'api'
 import mapToAction from 'helpers/operators/mapToAction'
 import $state from 'data/state'
+import { watch } from 'helpers/operators/watch'
 
 const $activeEmailChange = $state.pipe(
-  map((state) => state.activeEmail?.id),
+  watch((state) => state.activeEmail?.id),
   filter(Boolean),
-  distinctUntilChanged(),
   switchMap((emailId) => from(getEmailContent(emailId))),
   map(({ data }) => data),
   mapToAction('SET_ACTIVE_EMAIL_CONTENT')
 )
 
 const $activeFolderChange = $state.pipe(
-  map((state) => state.activeFolderId),
+  watch((state) => state.activeFolderId),
   filter(Boolean),
-  distinctUntilChanged(),
   switchMap((folderId) => from(getEmailsList(folderId))),
   map(({ data }) =>
     data
