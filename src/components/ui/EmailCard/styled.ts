@@ -67,4 +67,9 @@ export const EmailCardContainer = styled.div`
       color: ${({ theme }) => theme.colors.text};
     }
   }
+
+  &.deleted {
+    text-decoration: line-through;
+    color: ${({ theme }) => theme.colors.textSecondary};
+  }
 `
