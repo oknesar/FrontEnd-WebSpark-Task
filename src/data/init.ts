@@ -14,18 +14,47 @@ export default function initState() {
       scan((state, action) => {
         switch (action.type) {
           case 'FOLDER_LIST':
-            state.folders = action.payload
-            state.activeFolderId = action.payload[0]?.id
-            break
+            return {
+              ...state,
+              folders: action.payload,
+              activeFolderId: action.payload[0]?.id,
+            }
+
           case 'EMAIL_LIST':
-            state.emails = action.payload
-            break
+            return {
+              ...state,
+              emails: action.payload,
+              activeEmail: undefined,
+              activeEmailContent: undefined,
+            }
+
           case 'SET_ACTIVE_FOLDER':
             if (state.activeFolderId !== action.payload) {
-              state.activeFolderId = action.payload
-              state.emails = []
+              return {
+                ...state,
+                activeFolderId: action.payload,
+                emails: [],
+                activeEmail: undefined,
+                activeEmailContent: undefined,
+              }
             }
             break
+
+          case 'SET_ACTIVE_EMAIL':
+            if (state.activeEmail !== action.payload) {
+              return {
+                ...state,
+                activeEmail: action.payload,
+                activeEmailContent: undefined,
+              }
+            }
+            break
+
+          case 'SET_ACTIVE_EMAIL_CONTENT':
+            return {
+              ...state,
+              activeEmailContent: action.payload,
+            }
         }
 
         return state

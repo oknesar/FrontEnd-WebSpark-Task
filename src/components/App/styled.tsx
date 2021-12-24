@@ -25,6 +25,8 @@ export const AppEmailList = styled.section`
 export const AppEmailContent = styled.section`
   grid-area: content;
   overflow: auto;
+  padding: 0.5rem 2rem;
+  line-height: 1.4;
 `
 
 export const AppActions = styled.section`

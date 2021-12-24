@@ -7,13 +7,14 @@ import {
   EmailCardSubject,
 } from 'components/ui/EmailCard/styled'
 
-interface EmailCardProps {
+interface EmailCardProps extends Omit<JSX.IntrinsicElements['div'], 'ref'> {
   email: EmailRecord
+  isActive?: boolean
 }
 
-export default function EmailCard({ email }: EmailCardProps) {
+export default function EmailCard({ email, isActive, ...divProps }: EmailCardProps) {
   return (
-    <EmailCardContainer>
+    <EmailCardContainer className={isActive ? 'active' : undefined} {...divProps}>
       <EmailCardReadIndicator isRead={email.isRead} />
       <EmailCardFrom>{email.from}</EmailCardFrom>
       <EmailCardDate>{email.date.toLocaleString().slice(0, -3)}</EmailCardDate>

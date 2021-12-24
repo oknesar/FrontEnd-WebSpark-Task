@@ -5,6 +5,6 @@ export function fakeFolder(): Folder {
   return {
     id: uuid(),
     name: lorem.word(),
-    items: datatype.number({ min: 10, max: 100 }),
+    items: datatype.number({ min: 3, max: 10 }),
   }
 }

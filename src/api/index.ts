@@ -23,5 +23,5 @@ export const getEmailContent = (emailId: string) =>
       data
         .map((folder) => folder.list)
         .flat()
-        .find((email) => email.id === emailId)?.content
+        .find((email) => email.id === emailId)?.content ?? ''
   )

@@ -4,11 +4,11 @@ import ContentPlaceholder from 'components/ui/ContentPlaceholder'
 import Button from 'components/ui/Button'
 import { FaEye, FaTrash } from 'react-icons/fa'
 import FolderList from 'components/FolderList'
-import EmailCard from 'components/ui/EmailCard'
 import useStore from 'hooks/useStore'
+import EmailList from 'components/EmailList'
 
 function App() {
-  const emails = useStore((state) => state.emails)
+  const activeEmailContent = useStore((state) => state.activeEmailContent)
 
   return (
     <AppContainer>
@@ -16,12 +16,10 @@ function App() {
         <FolderList />
       </AppSidebar>
       <AppEmailList>
-        {emails.map((email) => (
-          <EmailCard key={email.id} email={email} />
-        ))}
+        <EmailList />
       </AppEmailList>
       <AppActions>
-        {false && (
+        {!!activeEmailContent && (
           <>
             <Button type='action'>
               <FaEye />
@@ -32,9 +30,7 @@ function App() {
           </>
         )}
       </AppActions>
-      <AppEmailContent>
-        <ContentPlaceholder />
-      </AppEmailContent>
+      <AppEmailContent>{activeEmailContent ?? <ContentPlaceholder />}</AppEmailContent>
     </AppContainer>
   )
 }
