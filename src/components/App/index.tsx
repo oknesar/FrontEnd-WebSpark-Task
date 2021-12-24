@@ -4,8 +4,11 @@ import FolderList from 'components/FolderList'
 import EmailList from 'components/EmailList'
 import ToolBar from 'components/ToolBar'
 import { EmailContent } from 'components/EmailContent'
+import useCurrentFolderListener from 'hooks/useCurrentFolderListener'
 
 function App() {
+  useCurrentFolderListener()
+
   return (
     <AppContainer>
       <AppSidebar>

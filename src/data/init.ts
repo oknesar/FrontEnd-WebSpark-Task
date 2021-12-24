@@ -77,6 +77,12 @@ export default function initState() {
               }
             }
             break
+
+          case 'NEW_EMAIL':
+            return {
+              ...state,
+              emails: !state.emails ? state.emails : [action.payload, ...state.emails],
+            }
         }
 
         return { ...state }
