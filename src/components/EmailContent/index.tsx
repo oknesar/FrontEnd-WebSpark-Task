@@ -1,5 +1,5 @@
 import ContentPlaceholder from 'components/ui/ContentPlaceholder'
-import React from 'react'
+
 import useStore from 'hooks/useStore'
 import Loader from 'components/ui/Loader'
 

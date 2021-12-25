@@ -1,5 +1,5 @@
 import FolderCard from 'components/ui/FolderCard'
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 import useEmitter from 'hooks/useEmitter'
 import useStore from 'hooks/useStore'
 import Loader from 'components/ui/Loader'

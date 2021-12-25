@@ -1,28 +1,20 @@
-import React from 'react'
-import { AppContainer, AppEmailContent, AppEmailList, AppSidebar, AppToolbar } from 'components/App/styled'
-import FolderList from 'components/FolderList'
-import EmailList from 'components/EmailList'
-import ToolBar from 'components/ToolBar'
-import { EmailContent } from 'components/EmailContent'
+import { AppContainer } from 'components/App/styled'
 import useCurrentFolderListener from 'hooks/useCurrentFolderListener'
+import Sidebar from 'components/Sidebar'
+import Feed from 'components/Feed'
+import Toolbar from 'components/Toolbar'
+import Viewport from 'components/Viewport'
 
 function App() {
+  // listen for a new emails
   useCurrentFolderListener()
 
   return (
     <AppContainer>
-      <AppSidebar>
-        <FolderList />
-      </AppSidebar>
-      <AppEmailList>
-        <EmailList />
-      </AppEmailList>
-      <AppToolbar>
-        <ToolBar />
-      </AppToolbar>
-      <AppEmailContent>
-        <EmailContent />
-      </AppEmailContent>
+      <Sidebar />
+      <Feed />
+      <Toolbar />
+      <Viewport />
     </AppContainer>
   )
 }
