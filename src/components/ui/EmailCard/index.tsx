@@ -7,13 +7,19 @@ import {
   EmailCardSubject,
 } from 'components/ui/EmailCard/styled'
 import cn from 'helpers/cn'
+import { memo, MouseEvent, useMemo } from 'react'
 
-interface EmailCardProps extends Omit<JSX.IntrinsicElements['div'], 'ref'> {
+interface EmailCardProps extends Omit<JSX.IntrinsicElements['div'], 'ref' | 'onClick'> {
   email: EmailRecord
   isActive?: boolean
+  onClick?: (email: EmailRecord, e: MouseEvent<HTMLDivElement>) => void
 }
 
-export default function EmailCard({ email, isActive, ...divProps }: EmailCardProps) {
+function EmailCard({ email, isActive, onClick, ...divProps }: EmailCardProps) {
+  const handleClick = useMemo(() => {
+    if (!onClick) return onClick
+    return (e: MouseEvent<HTMLDivElement>) => onClick(email, e)
+  }, [email, onClick])
   return (
     <EmailCardContainer
       className={cn({
@@ -21,6 +27,7 @@ export default function EmailCard({ email, isActive, ...divProps }: EmailCardPro
         deleted: email.isDeleted,
       })}
       {...divProps}
+      onClick={handleClick}
     >
       <EmailCardReadIndicator isRead={email.isRead} />
       <EmailCardFrom>{email.from}</EmailCardFrom>
@@ -30,3 +37,5 @@ export default function EmailCard({ email, isActive, ...divProps }: EmailCardPro
     </EmailCardContainer>
   )
 }
+
+export default memo(EmailCard)
