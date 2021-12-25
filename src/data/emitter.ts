@@ -6,6 +6,8 @@ export type Actions =
   | Action<'EMAIL_LIST', EmailRecord[]>
   | Action<'SET_ACTIVE_FOLDER', string>
   | Action<'SET_ACTIVE_EMAIL', EmailRecord>
+  | Action<'SET_PREVIOUS_EMAIL_ACTIVE'>
+  | Action<'SET_NEXT_EMAIL_ACTIVE'>
   | Action<'SET_ACTIVE_EMAIL_CONTENT', string>
   | Action<'TOGGLE_EMAIL_READ', string>
   | Action<'DELETE_EMAIL', string>

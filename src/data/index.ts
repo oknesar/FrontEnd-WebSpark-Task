@@ -83,6 +83,34 @@ export default function initState() {
               ...state,
               emails: !state.emails ? state.emails : [action.payload, ...state.emails],
             }
+
+          case 'SET_PREVIOUS_EMAIL_ACTIVE':
+          case 'SET_NEXT_EMAIL_ACTIVE':
+            if (!state.activeEmail && state.emails?.length) {
+              return {
+                ...state,
+                activeEmailContent: undefined,
+                activeEmail: {
+                  ...(action.type === 'SET_PREVIOUS_EMAIL_ACTIVE'
+                    ? state.emails[state.emails.length - 1]
+                    : state.emails[0]),
+                },
+              }
+            }
+            if (state.emails && state.activeEmail) {
+              const activeIndex = state.emails.findIndex((email) => email.id === state.activeEmail?.id)
+              const nextIndex = activeIndex + (action.type === 'SET_PREVIOUS_EMAIL_ACTIVE' ? -1 : 1)
+              return {
+                ...state,
+                activeEmailContent: undefined,
+                activeEmail: {
+                  ...state.emails[
+                    nextIndex > -1 ? nextIndex % state.emails.length : state.emails.length + nextIndex
+                  ],
+                },
+              }
+            }
+            break
         }
 
         return { ...state }

@@ -6,7 +6,7 @@ import reportWebVitals from 'reportWebVitals'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from 'style/global'
 import theme from 'style/theme'
-import initState from 'data/init'
+import initState from 'data'
 
 initState()
 // remove </React.StrictMode> because of issue with javascript debugger @see https://github.com/facebook/react/issues/22720
