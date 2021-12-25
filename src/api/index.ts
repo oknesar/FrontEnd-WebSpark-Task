@@ -29,7 +29,7 @@ export const getEmailContent = (emailId: string) =>
   )
 
 export const toggleRead = (emailId: string) =>
-  request(`/email/${emailId}`, () => {
+  request(`/email/${emailId}/toggleRead`, () => {
     const email = apiTestData
       .map((folder) => folder.list)
       .flat()
@@ -40,7 +40,7 @@ export const toggleRead = (emailId: string) =>
   })
 
 export const deleteEmail = (emailId: string) =>
-  request(`/email/${emailId}`, () => {
+  request(`/email/${emailId}/delete`, () => {
     const email = apiTestData
       .map((folder) => folder.list)
       .flat()
