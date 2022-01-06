@@ -36,7 +36,12 @@ export default function Toolbar() {
         <Button disabled={activeEmail?.isDeleted} type='action' onClick={handleToggleVisible}>
           <FaEye />
         </Button>
-        <Button disabled={activeEmail?.isDeleted} type='action' onClick={handleDeleteEmail}>
+        <Button
+          disabled={activeEmail?.isDeleted}
+          type='action'
+          onClick={handleDeleteEmail}
+          cancelWindowTime={5000}
+        >
           <FaTrash />
         </Button>
       </ToolbarButtonGroup>
